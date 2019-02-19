@@ -7,7 +7,7 @@ Introduction to the interface
 
 */
 
-// Let's start by making some sound 
+// Let's start by making some sound (make sure your sound is not at full volume!)
 Sine()
 
 //Sine() is a function that plays a sine wave sound. By default, this will play at 440Hz i.e. will oscillate 440 times per second.
@@ -20,11 +20,79 @@ Sine(220)
 Sine(880)
 
 
-//Everytime the code is run, 
+//Everytime the code is run, it will create a new instance of the sound. 
+
+//Clear everything by pressing [ctrl + period]
+
+//What if we just one sound to play and to update the pitch?  
 
 /*
-Creating a variable 
-
+1. Creating a variable 
 */
+
+a = Sine()
+
+//now we can set its frequency 
+
+a.frequency = 220
+
+//we can also change how loud or quiet is is 
+
+//and if we want to stop it, there are two ways: 
+a.disconnect()
+//or
+a._ 
+
+
+// some other sounds, try changing the frequency and amplitude
+a = Triangle()
+a._
+
+a = Square()
+a._
+
+
+//We can also do all of this in one line of code. 
+a = Sine(440, 0.5)
+
+
+/*
+2. Making some drum sounds
+*/
+
+/*
+x : kick drum hit
+o : snare drum hit
+* : close hihat
+- : open hihat
+. : rest
+*/
+
+//The function Drums will playback the drum sounds. 
+//basic drumbeat
+x = Drums('xox-')
+
+// or you can make it more exciting.. 
+x = Drums('x*..ox*xo-')
+
+
+//Change tempo
+
+Clock.bpm = 140
+
+//We can add effects to this drum-kit in the same way that we changed the sine()
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
