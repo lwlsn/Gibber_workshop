@@ -1,0 +1,30 @@
+/*
+Introduction to the interface
+
+//[ctrl + return] RUN 1 LINE OF CODE
+// [alt + return] RUN MULTIPLE LINES OF CODE OF CODE
+//[ctrl + period] STOP EVERYTHING
+
+*/
+
+// Let's start by making some sound 
+Sine()
+
+//Sine() is a function that plays a sine wave sound. By default, this will play at 440Hz i.e. will oscillate 440 times per second.
+// This number determines how high or low we play the sound.
+
+//What if we want to make this lower or higher? We can change the number in the bracket.
+
+Sine(220)
+
+Sine(880)
+
+
+//Everytime the code is run, 
+
+/*
+Creating a variable 
+
+*/
+
+
