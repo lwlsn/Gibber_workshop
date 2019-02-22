@@ -188,10 +188,29 @@ k.fx.add( Distortion(10) )
 		-- ADD SOME VISUALS TO YOUR CODE!
 */
 
-
 //Well done for making it this far. 
 
 //Another cool thing that we can do in Gibber is add some visual effects to the music. 
+
+
+a = Cube({ scale:2 }).spin(.004)
+
+b = Pixellate()
+b.amount = 0.4
+
+c = Dots()
+c.update = function() {
+  this.angle += .0001
+}
+
+d = Kaleidoscope()
+d.sides.seq([2,3,4], 4)
+
+e = Drums("x..x")
+
+
+c.scale = e.Out
+
 
 
 m = Cube()// default color is white, or {r:1, g:1, b:1}
