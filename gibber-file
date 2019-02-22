@@ -1,8 +1,13 @@
 /*
-Introduction to the interface
+Gibber Workshop 22/02 
+*/
 
-//[ctrl + return] RUN 1 LINE OF CODE
-// [alt + return] RUN MULTIPLE LINES OF CODE OF CODE
+/*
+0. Introduction
+
+commands you might need... 
+//[ctrl + return]  RUN 1 LINE OF CODE
+// [alt/option + return] RUN MULTIPLE LINES OF CODE OF CODE
 //[ctrl + period] STOP EVERYTHING
 
 */
@@ -32,32 +37,90 @@ Sine(880)
 
 a = Sine()
 
-//now we can set its frequency 
+//now we can set its frequency without making a new synth
 
 a.frequency = 220
 
 //we can also change how loud or quiet is is 
+a.amp = 0.1
+
 
 //and if we want to stop it, there are two ways: 
 a.disconnect()
 //or
 a._ 
 
+//We can also do all of this in one line of code. 
+a = Sine(440, 0.5)
 
 // some other sounds, try changing the frequency and amplitude
 a = Triangle()
 a._
 
-a = Square()
+a = Square(440,0.1)
 a._
 
+/*
+3. Making some synthesiser sounds and sequences
+*/
 
-//We can also do all of this in one line of code. 
-a = Sine(440, 0.5)
+// Next we'll create a "Synth" to play some notes. Clear all sound if any is currently running. 
+
+//Play this to run your scale in note order
+s = Synth()
+
+//Running this code on its own doesn't make any sound. You need to give it some notes to play! 
+
+s.note.seq([0,1,2,3,4,5,6,7],1/4)
+
+s._
+
+//We can make new synths like this
+
+b = Synth({ maxVoices:4, waveform:'Triangle', attack:ms(1), decay:ms(1000) })
+
+b.play( [440, 880, 1320], 1/8 ) //plays three notes, each with a duration of 1/4 of a note. 
+
+//The square brackets here denote something called an array, which allow us to playback a sequence of notes. 
+
+b._
+
+//Another Fun Synth to try.
+
+c = FM()
+c.play( [1,2,3,4,7, -7], [1/8, 1/8, 1/16] )
+	.cmRatio.seq ([2,1], 1/4)
+	.attack = ms(1000)
+	.decay = ms(1000)
+
+//Try changing some of the numbers in here and see how the sound changes. 
+
+//You can change the scale of the sound and the "root note" - where the scale starts from. 
+
+Gibber.scale.mode="Major"
+Gibber.scale.root="d4"
+
+
+//Play with the sound by running this code and moving your mouse around the screen
+c.cmRatio = Mouse.X
+c.index = Mouse.Y
+
+//Or you can just change this number
+c.cmRatio = 0.1
+
 
 
 /*
-2. Making some drum sounds
+Adding effects to the sound
+*/
+
+
+
+
+
+
+/*
+4. Making some drum sounds
 */
 
 /*
