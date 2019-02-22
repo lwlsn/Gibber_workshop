@@ -41,7 +41,7 @@ a = Sine()
 
 a.frequency = 220
 
-//we can also change how loud or quiet is is 
+//we can also change how loud or quiet is is through its amplitude.  
 a.amp = 0.1
 
 
@@ -57,7 +57,9 @@ a = Sine(440, 0.5)
 a = Triangle()
 a._
 
-a = Square(440,0.1)
+
+//We can also give the function some parameters. Here the first is the frequency, the second the amplitude.
+a = Square(220,0.1)
 a._
 
 /*
@@ -66,7 +68,6 @@ a._
 
 // Next we'll create a "Synth" to play some notes. Clear all sound if any is currently running. 
 
-//Play this to run your scale in note order
 s = Synth()
 
 //Running this code on its own doesn't make any sound. You need to give it some notes to play! 
@@ -85,15 +86,16 @@ b.play( [440, 880, 1320], 1/8 ) //plays three notes, each with a duration of 1/4
 
 b._
 
-//Another Fun Synth to try.
+//Another Fun Synth to try. Try running all the code below together. 
 
 c = FM()
 c.play( [1,2,3,4,7, -7], [1/8, 1/8, 1/16] )
 	.cmRatio.seq ([2,1], 1/4)
-	.attack = ms(1000)
-	.decay = ms(1000)
+	.attack = ms(100)
+	.decay = ms(100)
 
-//Try changing some of the numbers in here and see how the sound changes. 
+//Try changing some of the numbers in here and re-run it to see how the sound changes.
+//You could change the numbers at the end to be smaller than 1000.
 
 //You can change the scale of the sound and the "root note" - where the scale starts from. 
 
@@ -105,7 +107,7 @@ Gibber.scale.root="d4"
 c.cmRatio = Mouse.X
 c.index = Mouse.Y
 
-//Or you can just change this number
+//Or you can just change this number manually
 c.cmRatio = 0.1
 
 c._
@@ -184,6 +186,11 @@ k.fx.add( Delay( 1/64) )
 k.fx.add( Distortion(10) ) 
 
 
+//to stop these sounds..
+j._
+k._
+
+
 /* BONUS 
 		-- ADD SOME VISUALS TO YOUR CODE!
 */
@@ -192,11 +199,10 @@ k.fx.add( Distortion(10) )
 
 //Another cool thing that we can do in Gibber is add some visual effects to the music. 
 
-
 a = Cube({ scale:2 }).spin(.004)
 
 b = Pixellate()
-b.amount = 0.4
+b.amount = 0.04
 
 c = Dots()
 c.update = function() {
@@ -208,9 +214,17 @@ d.sides.seq([2,3,4], 4)
 
 e = Drums("x..x")
 
-
+// You can then set the visuals to react to the sound like this.. 
 c.scale = e.Out
 
+
+//Clear the window [Ctrl+ .]
+
+//Now try some other functions.
+//ANIMATING≥
+// run this code, what happens?
+
+//How fast can it go?
 
 
 m = Cube()// default color is white, or {r:1, g:1, b:1}
@@ -221,36 +235,27 @@ m = Cube()// default color is white, or {r:1, g:1, b:1}
   m.spin(0.005)
 //change the values between 0 and 2, you can go higher but you lose contrast
 
-//ANIMATING
-// run this code, what happens?
 
-//***COPY AND PASTE TO MAKE ANOTHER ONE
-
-
-n = Cube()// default color is white, or {r:1, g:1, b:1}
-	n.color.r = 3   //change amount of red
-	n.color.g = 3				//change green
-	n.color.b = 3   		//change blue
-  n.position.y.seq( [-50,0,50], ms(500) )
-  n.spin(0.01)
-//change the values between 0 and 2, you can go higher but you lose contrast
 
 //MAPPINGS
 a = Knot()
 b = Dots() // halftone shader
 b.scale = Mouse.X // size of dots to x position
-b.angle = Mouse.Y // angle of dot placement to y
+b.angle = Mouse.Y // angle of dot placement to 
   
-//ANIMATING
- // run this code, what happens?
 
-//How fast can it go?
-//How would you make it moving??
+//How would you make this move?
 
 
 //BUILT IN SHADERS or POST PROCESSING
-
+//finally, we can add some fun shader effects to the visuals. 
 f = Focus(500, 278, 200, 0)
+
+
+/*
+5. - HAVE A GO AT MAKING YOUR OWN TRACKS HERE! 
+*/
+
 
 
 
