@@ -108,16 +108,42 @@ c.index = Mouse.Y
 //Or you can just change this number
 c.cmRatio = 0.1
 
-
+c._
 
 /*
-Adding effects to the sound
+3. Adding effects to the sound
 */
 
+//Let's create another synth again
+d = FM()
+d.play( [1,3,5, 7,5,3,7], [1/8, 1/8, 1/16] )
+	.cmRatio.seq ([2,1], 1/4)
+
+//Now we can can add some reverb to the sound 
+d.fx.add(Reverb())
+
+//We could also add some delay by creating another variable
+
+delay = Delay( 1/8, .1 ) // delay time and feedback
+
+//now we add the effect to the synth
+d.fx.add(delay)
+
+//remove all effects
+
+d.fx.remove()
+
+//try new effects
+d.fx.add(Distortion(10))
 
 
+//stop it playing
+d._
 
 
+//You can find more effects in the reference.. https://gibber.cc/docs/index.html
+
+//Try making your own sound sequences and adding effects to them! 
 
 /*
 4. Making some drum sounds
@@ -139,20 +165,73 @@ x = Drums('xox-')
 x = Drums('x*..ox*xo-')
 
 
-//Change tempo
+//Change tempo - makes everything go faster or slower.
 
 Clock.bpm = 140
 
-//We can add effects to this drum-kit in the same way that we changed the sine()
+//We can add effects to this drum-kit in the same way that we did with the synth! 
 
 
+x.fx.add( Delay( 1/64) )  
+x.fx.add( Distortion(1) )
+
+x._
+
+j = EDrums('. o', [1/4])
+k = Kick().play( [40, 55, 110, 20].random(), [1/2, 1/4].random() ) 
+
+k.fx.add( Delay( 1/64) )  
+k.fx.add( Distortion(10) ) 
 
 
+/* BONUS 
+		-- ADD SOME VISUALS TO YOUR CODE!
+*/
 
 
+//Well done for making it this far. 
+
+//Another cool thing that we can do in Gibber is add some visual effects to the music. 
 
 
+m = Cube()// default color is white, or {r:1, g:1, b:1}
+	m.color.r = 3    //change amount of red
+	m.color.g = 3				//change green
+	m.color.b = 3    		//change blue
+  m.position.x.seq( [-50,0,50], ms(1000) )
+  m.spin(0.005)
+//change the values between 0 and 2, you can go higher but you lose contrast
 
+//ANIMATING
+// run this code, what happens?
+
+//***COPY AND PASTE TO MAKE ANOTHER ONE
+
+
+n = Cube()// default color is white, or {r:1, g:1, b:1}
+	n.color.r = 3   //change amount of red
+	n.color.g = 3				//change green
+	n.color.b = 3   		//change blue
+  n.position.y.seq( [-50,0,50], ms(500) )
+  n.spin(0.01)
+//change the values between 0 and 2, you can go higher but you lose contrast
+
+//MAPPINGS
+a = Knot()
+b = Dots() // halftone shader
+b.scale = Mouse.X // size of dots to x position
+b.angle = Mouse.Y // angle of dot placement to y
+  
+//ANIMATING
+ // run this code, what happens?
+
+//How fast can it go?
+//How would you make it moving??
+
+
+//BUILT IN SHADERS or POST PROCESSING
+
+f = Focus(500, 278, 200, 0)
 
 
 
